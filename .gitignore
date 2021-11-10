@@ -1,0 +1,14 @@
+**/.pytest_cache/
+
+**/__pycache__/
+build.log
+**/.DS_Store
+**/._.DS_Store
+**/.ipynb_checkpoints/
+.coveragerc
+_doc/
+coding_stuff/
+test_notebooks/
+docs/trashed_docs/
+docs/_build/
+docs/_conf.py

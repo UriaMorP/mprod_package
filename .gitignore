@@ -12,3 +12,6 @@ test_notebooks/
 docs/trashed_docs/
 docs/_build/
 docs/_conf.py
+
+build/
+mprod_package.egg-info/

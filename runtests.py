@@ -48,8 +48,12 @@ PROJECT_ROOT_FILES = ['mprod', 'setup.py']
 SAMPLE_TEST = "mprod/decompositions/tests/test_decompositions.py::test_tqrm"
 SAMPLE_SUBMODULE = "decompositions"
 
-EXTRA_PATH = ['/home/labs/elinav/uria/lib/ccache', '/home/labs/elinav/uria/lib/f90cache',
-              '/home/labs/elinav/uria/local/lib/ccache', '/home/labs/elinav/uria/local/lib/f90cache']
+# EXTRA_PATH = ['/home/labs/elinav/uria/lib/ccache', '/home/labs/elinav/uria/lib/f90cache',
+#               '/home/labs/elinav/uria/local/lib/ccache', '/home/labs/elinav/uria/local/lib/f90cache']
+
+EXTRA_PATH = ['~/lib/ccache', '~/lib/f90cache',
+              '~/local/lib/ccache', '~/local/lib/f90cache']
+
 
 # ---------------------------------------------------------------------
 

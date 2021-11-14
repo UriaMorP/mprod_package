@@ -6,7 +6,7 @@ configuration = {
     "packages":['mprod'],
     "long_description":open('README.md').read(),
     "extras_require": {
-        "dev":["pytest>=6.2.0",]
+        "dev":["pytest==6.2.2",]
     }
 }
 

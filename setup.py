@@ -1,13 +1,48 @@
 from setuptools import setup
 
+with open('README.md') as readme_file:
+    readme = readme_file.read()
+
 configuration = {
+    "author":'Uria Mor, Rafael Valdes Mas, Yotam Cohen, Haim Avron',
+    "author_email":"uriamo@gmail.com",
+    "description":"Software implementation for tensor-tensor m-product framework",
+    "long_description_content_type":'text/markdown',
+    "license": "BSD",
+    "classifiers":[  # Optional
+        'Development Status :: 3 - Alpha',
+        'Intended Audience :: Scientists',
+        'Programming Language :: Python :: 3.6',
+        'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
+        "Programming Language :: Python :: 3.10",
+        'Programming Language :: Python :: 3 :: Only',
+    ],
+    "keywords":["Tensor", "multi way"
+            , "omics", "longitudinal"
+            , "factorization", "analysis"
+            ,"TCA", "TCAM", "PCA", "M product"
+            ,"tensor tensor product"
+            ,"tSVD","tSVDM", "tensor decomposition"],
     "name":'mprod-package',
     "version":'0.0.1',
     "packages":['mprod'],
-    "long_description":open('README.md').read(),
+    "long_description":readme,
+    "url": "https://github.com/UriaMorP/mprod_package",
+    "python_requires":'>=3.6.8',
+    "install_requires":[
+        "numpy >= 1.19.2",
+        "scikit-learn >= 0.24.1",
+        "scipy >= 1.5.3",
+        "dataclasses >= 0.7",
+        "pandas >= 1.1.5"
+    ],
     "extras_require": {
         "dev":["pytest==6.2.2",]
     }
 }
+
+setup
 
 setup(**configuration)

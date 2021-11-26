@@ -43,6 +43,5 @@ configuration = {
     }
 }
 
-setup
 
 setup(**configuration)

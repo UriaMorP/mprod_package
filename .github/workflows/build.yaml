@@ -36,9 +36,6 @@ jobs:
           if [ ${{ matrix.python-version }} == 3.6 ]; then pip install dataclasses>=0.7; fi
           pip install -e .
 
-      - name: run linter [flake8]
-        run: flake8 .
-
       - name: unit tests [pytest]
         run: |
           pytest --show-capture=no -v --disable-warnings --junitxml=pytest.xml

@@ -47,6 +47,8 @@ steps:
       testResultsFiles: 'pytest.xml'
       testRunTitle: '$(Agent.OS) - $(Build.BuildNumber)[$(Agent.JobName)] - Python $(python.version)'
     condition: succeededOrFailed()
+
+
   # - job: MacOS
   #   pool:
   #     vmImage: 'macOS-latest'

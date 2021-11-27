@@ -11,14 +11,26 @@ The library currently contains tubal QR and tSVDM decompositions, and the TCAM m
 </p>
 
 ## Installation 
-Make sure that all dependencies are installed in a newly created conda environment using the conda-forge channel
+
+### using pip
+
+The package is available at pypi and can be installed via the command
+```
+pip install mprod-package 
+```
+
+
+### from source 
+Make sure that all dependencies listed below are installed in a newly created conda environment, preferably - using the conda-forge channel.
+
+We stated the exact versions used to locally test the code, more recent versions of these packages should work as well.
 
 Dependencies:
 * python                    3.6.8
 * scipy                     1.5.3
 * scikit-learn              0.24.1
 * numpy                     1.19.2
-* dataclasses               0.7
+* dataclasses               0.7   (Only for python version < 3.7)
 * pip                       21.0.1
 
 

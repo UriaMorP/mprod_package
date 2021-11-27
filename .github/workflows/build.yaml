@@ -32,4 +32,4 @@ jobs:
 
       - name: unit tests [pytest]
         run: |
-        pytest --show-capture=no -v --disable-warnings --junitxml=pytest.xml
+          pytest --show-capture=no -v --disable-warnings --junitxml=pytest.xml

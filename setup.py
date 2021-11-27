@@ -35,7 +35,7 @@ configuration = {
         "numpy >= 1.19.2",
         "scikit-learn >= 0.24.1",
         "scipy >= 1.5.3",
-        "dataclasses >= 0.7",
+        "dataclasses >= 0.7; python_version < '3.7'",
         "pandas >= 1.1.5"
     ],
     "extras_require": {

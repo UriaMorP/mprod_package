@@ -41,11 +41,6 @@ pip install -e .
 
 
 
-
-The package 
-
-
-
 ## References
 <a id="1">[1]</a> 
 Misha E. Kilmer, Lior Horesh, Haim Avron, and Elizabeth Newman.  Tensor-tensor algebra for optimal representation and compression of multiway data. Proceedings of the National Academy of Sciences, 118(28):e2015851118, jul 2021.

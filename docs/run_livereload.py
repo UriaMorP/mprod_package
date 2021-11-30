@@ -11,4 +11,4 @@ if __name__ == '__main__':
     server.watch('examples/*.ipynb', shell('make html'), delay=.1)
     server.watch('_static/*', shell('make html'), delay=1)
     server.watch('_templates/*', shell('make html'), delay=1)
-    server.serve(root='_build/html', host="cn240.wexac.weizmann.ac.il", port=8888)
+    server.serve(root='_build/html', host="localhost", port=8888)

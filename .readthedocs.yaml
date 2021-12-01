@@ -11,7 +11,7 @@ version: 2
     # golang: "1.17"
 
 python:
-  version: 3
+  version: 3.6
   install:
     - method: pip
       path: .

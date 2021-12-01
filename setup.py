@@ -48,6 +48,8 @@ configuration = {
             "nbsphinx == 0.8.6",
             "sphinx_rtd_theme == 0.5.2",
             "ipykernel == 5.4.3",
+            "seaborn",
+            "matplotlib",
         ]
     }
 }

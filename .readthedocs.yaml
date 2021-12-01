@@ -5,7 +5,6 @@ build:
   os: ubuntu-20.04
   tools:
     python: "3.6"
-    sphinx-gallery: "0.9.0"
     # You can also specify other tool versions:
     # nodejs: "16"
     # rust: "1.55"

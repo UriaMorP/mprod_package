@@ -14,6 +14,7 @@ import os
 import sys
 import sphinx_gallery
 sys.path.insert(0, os.path.abspath('../'))
+sys.path.append(os.path.abspath('../'))
 import sphinx_rtd_theme
 
 import mprod
@@ -69,8 +70,8 @@ source_suffix = [".rst", ".ipynb"]
 
 # do not execute cells
 # nbsphinx_execute = "always"
-# nbsphinx_kernel_name = 'Python 3'
-# nbsphinx_execute = "never"
+nbsphinx_kernel_name = 'Python 3'
+nbsphinx_execute = "never"
 
 
 # allow errors because not all tutorials build

@@ -3,7 +3,8 @@
 """
 # import dimensionality_reduction
 # from .dimensionality_reduction._tcam import TCAM
-# from .decompositions._tsvdm import svdm
+# import decompositions as decompositions
+# import dimensionality_reduction
 from ._ml_helpers import MeanDeviationForm, table2tensor
 from ._base import m_prod, tensor_mtranspose, x_m3
 

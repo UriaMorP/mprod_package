@@ -69,8 +69,8 @@ source_suffix = [".rst", ".ipynb"]
 
 # do not execute cells
 # nbsphinx_execute = "always"
-nbsphinx_kernel_name = 'Python 3'
-nbsphinx_execute = "never"
+# nbsphinx_kernel_name = 'Python 3'
+# nbsphinx_execute = "never"
 
 
 # allow errors because not all tutorials build

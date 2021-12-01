@@ -41,15 +41,14 @@ configuration = {
     "extras_require": {
         "dev":["pytest==6.2.2",],
         "docs":[
-            "sphinx-gallery == 0.9.0",
-            "numpydoc == 1.1.0",
-            "sphinxcontrib-bibtex == 2.3.0",
-            "sphinx-prompt == 1.4.0",
-            "nbsphinx == 0.8.6",
-            "sphinx_rtd_theme == 0.5.2",
-            "ipykernel == 5.4.3",
+            "sphinx-gallery",
+            "numpydoc",
+            "sphinxcontrib-bibtex",
+            "sphinx-prompt",
+            "nbsphinx",
+            "sphinx_rtd_theme",
+            "ipykernel",
             "seaborn",
-            "matplotlib",
         ]
     }
 }

@@ -16,3 +16,6 @@ dist/
 build/
 mprod_package.egg-info/
 pytest.xml
+
+docs_exp/
+docs/run_livereload.py

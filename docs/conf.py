@@ -112,9 +112,10 @@ autodoc_default_options = {"members": True, "inherited-members": False, "methods
 # html_theme = 'alabaster'
 html_theme = 'sphinx_rtd_theme'
 html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
-html_theme_options = {"logo_only": True}
-html_logo = "_static/img/mprod_logo_small.png"
-html_favicon = "_static/img/mprod_logo_fav.png"
+# html_theme_options = {"logo_only": True}
+# html_logo = "_static/img/mprod_logo_small.png"
+# html_favicon = "_static/img/mprod_logo_fav.png"
+
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".

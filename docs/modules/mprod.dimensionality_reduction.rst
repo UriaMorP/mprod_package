@@ -22,3 +22,5 @@ Future plans are to implement tensor-CCA tensor-PLS etc....
    :toctree: stubs
    :undoc-members:
    :show-inheritance:
+
+

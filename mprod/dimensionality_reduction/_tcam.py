@@ -37,8 +37,10 @@ class TCAM(TransformerMixin, BaseEstimator):
     Linear dimensionality reduction using tensor Singular Value Decomposition of the
     data to project it to a lower dimensional space. The input data is centered
     but not scaled for each feature before applying the tSVDM (using :mod:`mprod.MeanDeviationForm` ) .
-    It uses the :mod:`mprod.decompositions.svdm` function as basis for the `tsvdmII` algorithm from Kilmer et. al.
-    then offers a CP like transformations of the data accordingly
+    It uses the :mod:`mprod.decompositions.svdm` function as basis for the ``TSVDMII`` algorithm from Kilmer et. al.
+    (https://doi.org/10.1073/pnas.2015851118) then offers a CP like transformations of the data accordingly.
+    See https://arxiv.org/abs/2111.14159 for theoretical results and case studies, and the :ref:`Tutorials <TCAM>`
+    for elaborated examples
 
     Parameters
     ----------
@@ -66,6 +68,11 @@ class TCAM(TransformerMixin, BaseEstimator):
 
     explained_variance_ratio_ : ndarray of shape (`n_components_`,)
         The amount of variance explained by each of the selected components.
+
+    mode2_loadings : ndarray (float) of shape (`n_components_`, `n_features` )
+        A matrix representing the contribution (coefficient) of each feature in the orinial
+        features space (2'nd mode of the tensor) to each of the TCAM factors.
+
 
     """
 
@@ -201,7 +208,7 @@ class TCAM(TransformerMixin, BaseEstimator):
         # XVS_hat = self.fun_m(XVS)
 
         XV_hat = np.matmul(self.fun_m(X).transpose(2, 0, 1), trunc_V.transpose(2, 0, 1))
-        XVS_hat = XV_hat # * _pinv_diag(trunc_S).transpose().reshape(self._n, 1, self._rrho.max())
+        XVS_hat = XV_hat * _pinv_diag(trunc_S).transpose().reshape(self._n, 1, self._rrho.max())
         XVS_hat = XVS_hat.transpose(1, 2, 0)
 
         Y = XVS_hat[:, self._n_factors_order[1], self._n_factors_order[0]].copy()
@@ -248,7 +255,7 @@ class TCAM(TransformerMixin, BaseEstimator):
         """
         # _assert_order_and_mdim(X, 'X', 3, [(1, self._p), (2, self._n)])
         # return self._mode1_projector(self._mdf.transform(X))
-        return self._truncated_hat_svdm.v[:, self._n_factors_order[1], self._n_factors_order[0]].copy()
+        return self._truncated_hat_svdm.v[self._n_factors_order[1], :, self._n_factors_order[0]].copy()
 
     def fit_transform(self, X: np.ndarray, y=None, **fit_params):
 
@@ -298,7 +305,7 @@ class TCAM(TransformerMixin, BaseEstimator):
 
         YY_hat = np.zeros((Y.shape[0], self._rrho.max(), self._n))
         YY_hat[:, self._n_factors_order[1], self._n_factors_order[0]] = Y.copy()
-        YYS_hat = YY_hat.transpose(2, 0, 1) #* trunc_S.transpose().reshape(self._n, 1, self._rrho.max())
+        YYS_hat = YY_hat.transpose(2, 0, 1) * trunc_S.transpose().reshape(self._n, 1, self._rrho.max())
         X_hat = np.matmul(YYS_hat, trunc_V.transpose(2, 1, 0)).transpose(1, 2, 0)
         XX = self.inv_m(X_hat)
 

@@ -3,7 +3,8 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. figure:: _static/img/mprod_logo_fav.png
+..
+   _.. figure:: _static/img/mprod_logo_fav.png
 
 
 
@@ -16,15 +17,26 @@ mprod is a software implementation for tensor-tensor algebraic framework derived
 The package builds on NumPy\ :footcite:p:`Harris2020` and Scipy\ :footcite:p:`Virtanen2020` libraries to realize
 core operations and components required for the algebraic framework.
 
-In addition, mprod provides
+---------------------------------------------------------
+
+:mod:`mprod-package` implements the fundamental components required for the :math:`\star_{\mathbf{M}}`-product algebraic
+framework; tensor-transpose, tensor-matrix multiplication (domain transforms), face-wise tensor multiplication, and, of
+course, the :math:`\star_{\mathbf{M}}` tensor-tensor product.
+
+In addition, the library offers several basic tensor factorizations such as :mod:`mprod.decompostions.tsvdm`
+:footcite:p:`Kilmer` , and :math:`\star_{\mathbf{M}}`-product based dimensionality reduction methods like the
+:mod:`mprod.dimensionality_reduction.TCAM` :footcite:p:`mor2021`
+
+
+---------------------------------------------------------
 
 
 
 
 
 
-Welcome
--------
+Scientific context
+------------------
 
 *We live in a multi-dimensional world, immersed in huge volumes of data. This data often involves complex interlinked
 structures that span across multiple dimensions. Processes and phenomena also exhibit multi-dimensional behavior,
@@ -51,13 +63,7 @@ integrity*\ .
 
   -- \ **Lior Horesh, IBM research** :footcite:p:`LHoresh`
 
----------------------------------------------------------
 
-The `mprod` package implements the fundamental components required for the :math:`\star_{\mathbf{M}}`-product algebraic
-framework; tensor-transpose, tensor-matrix multiplication (domain transforms), face-wise tensor multiplication, and, of
-course, the :math:`\star_{\mathbf{M}}` tensor-tensor product.`
-
----------------------------------------------------------
 
 
 

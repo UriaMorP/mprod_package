@@ -139,7 +139,7 @@ def table2tensor(table: pd.DataFrame, missing_flag: bool = False) -> Tuple[np.ma
 # noinspection PyPep8Naming
 # noinspection PyUnusedLocal
 class MeanDeviationForm(TransformerMixin, BaseEstimator):
-    """Standardize the data by subtracting the mean sample
+    """Standardize the data by subtracting the mean (or empiric mean) sample
     The mean deviation form of a tensor :math:`X \\in \mathbb{R}^{m \\times p \\times n}` is calculated as:
 
             Z = X - U
@@ -148,6 +148,16 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
 
     .. math::
         U = \\frac{1}{m} \\sum_{i=1}^{m} X[i,:,:]
+
+    and for the empiric mean deviation form:
+
+    .. math::
+        U = \\frac{1}{m-1} \\sum_{i=1}^{m} X[i,:,:]
+
+    Parameters
+    ----------
+    empiric : `bool`, default=False, or `None`
+        If ``True``, use the empiric mean sample calculation.
 
     Attributes
     ----------
@@ -164,7 +174,6 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
 
     def _fit(self, X):
         denum = X.shape[0]
-
         self._mean_sample = np.nansum(X, axis=0, keepdims=True) / denum
 
     def fit(self, X, y=None, **fit_param):
@@ -188,7 +197,7 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
         >>> from mprod import MeanDeviationForm
         >>> import numpy as np
         >>> X = np.random.randn(10,20,4)
-        >>> mdf = MeanDeviationForm()
+        >>> mdf = MeanDeviationForm(empiric=False)
         >>> mdf = mdf.fit(X)
         """
         self._fit(X)
@@ -213,7 +222,7 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
         >>> import numpy as np
         >>> X = np.random.randn(10,20,4)
         >>> y = np.random.randn(50,20,4)
-        >>> mdf = MeanDeviationForm(empiric=False)
+        >>> mdf = MeanDeviationForm()
         >>> mdf_fit = mdf.fit(X)
         >>> yt = mdf.transform(yt)
         """

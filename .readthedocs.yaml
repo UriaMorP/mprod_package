@@ -17,8 +17,6 @@ python:
       path: .
       extra_requirements:
         - docs
-    - method: ipykernel 
-      path: install --user --name=mprod
   system_packages: true
   
         

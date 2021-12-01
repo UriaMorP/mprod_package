@@ -1,6 +1,7 @@
 # mprod_package
 
 [![Build and test [Python 3.6, 3.7, 3.8, 3.9]](https://github.com/UriaMorP/mprod_package/actions/workflows/build.yaml/badge.svg)](https://github.com/UriaMorP/mprod_package/actions/workflows/build.yaml)
+[![Documentation Status](https://readthedocs.org/projects/mprod-package/badge/?version=latest)](https://mprod-package.readthedocs.io/en/latest/?badge=latest)
 
 Software implementation for tensor-tensor m-product framework [[1]](#1).
 The library currently contains tubal QR and tSVDM decompositions, and the TCAM method for dimensionality reduction.

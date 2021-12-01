@@ -39,7 +39,17 @@ configuration = {
         "pandas >= 1.1.5"
     ],
     "extras_require": {
-        "dev":["pytest==6.2.2",]
+        "dev":["pytest==6.2.2",],
+        "docs":[
+            "sphinx-gallery",
+            "numpydoc",
+            "sphinxcontrib-bibtex",
+            "sphinx-prompt",
+            "nbsphinx",
+            "sphinx_rtd_theme",
+            "ipykernel",
+            "seaborn",
+        ]
     }
 }
 

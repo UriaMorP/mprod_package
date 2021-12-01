@@ -16,6 +16,8 @@ import sphinx_gallery
 sys.path.insert(0, os.path.abspath('../'))
 import sphinx_rtd_theme
 
+import mprod
+
 
 # -- Project information -----------------------------------------------------
 
@@ -67,6 +69,7 @@ source_suffix = [".rst", ".ipynb"]
 
 # do not execute cells
 nbsphinx_execute = "always"
+nbsphinx_kernel_name = 'mprod'
 # nbsphinx_execute = "never"
 
 

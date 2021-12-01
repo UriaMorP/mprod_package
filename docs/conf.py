@@ -75,7 +75,7 @@ nbsphinx_kernel_name = 'python3'
 
 
 # allow errors because not all tutorials build
-nbsphinx_allow_errors = True
+# nbsphinx_allow_errors = True
 
 # napoleon related
 

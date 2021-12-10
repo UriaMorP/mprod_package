@@ -18,18 +18,21 @@ The library currently contains tubal QR and tSVDM decompositions, and the TCAM m
 
 ## Installation 
 
-### using pip
+### Conda
+The `mprod-package` is hosted in [conda-forge](https://conda-forge.org/) channel. 
 
-The package is available at pypi and can be installed via the command
+```
+conda install -c conda-forge mprod-package
+```
+
+### pip
 ```
 pip install mprod-package 
 ```
+See `mprod-package`s [pypi entry](https://pypi.org/project/mprod-package/)
 
-
-### from source 
-Make sure that all dependencies listed below are installed in a newly created conda environment, preferably - using the conda-forge channel.
-
-We stated the exact versions used to locally test the code, more recent versions of these packages should work as well.
+### From source 
+Make sure that all dependencies listed below are installed in and found in your path. 
 
 Dependencies:
 * python                    3.6.8
@@ -39,12 +42,12 @@ Dependencies:
 * dataclasses               0.7   (Only for python version < 3.7)
 * pip                       21.0.1
 
-
 Clone the repository, then from the package directory, run
 ```
 pip install -e .
 ```
 
+The above dependencies are stated with exact versions used for locally test `mprod-package`, these packages were obtained from conda-forge channel.
 
 
 ## References

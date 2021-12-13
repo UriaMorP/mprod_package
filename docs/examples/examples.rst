@@ -21,11 +21,12 @@ In fact, it is aimed at non-experts
 That said, the library is not - by any means - meant to serve as a **black magic tensor package for dummies**.
 Just like with almost everything in machine-learning, using this library for ML related tasks require **some** general
 mathematical understanding of ML concepts.
-Since the implementation here, is made consistent with `scikit-learn <https://scikit-learn.org/>`_ library to the
-maximum possible extent, in order to enable smooth integration within the pythonic ML ecosystem.
+The implementation of dimensionality reduction methods (currently TCAM), is made consistent with
+`scikit-learn <https://scikit-learn.org/>`_ library to the maximum possible extent, in order to enable smooth
+integration within the pythonic ML ecosystem.
 For this reason, the users are assumed to know the `scikit-learn <https://scikit-learn.org/>`_ library.
 Scikit-learn package offers fantastic documentation, tutorials and examples that are more than enough in order to get
-started with machine learning in no time
+started with machine learning in no time.
 
 .. note::
 

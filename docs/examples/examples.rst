@@ -34,8 +34,8 @@ started with machine learning in no time
 
 In addition, deep understanding of the mathematical theory underlying  mprod based tensor algorithms is always a good
 idea. Bellow, you can find a short :ref:`Primer` section  about the idea behind tensor-tensor algebra via the
-:math:`\star_{\bf{M}}` -product framework (For a thorough introduction, we refer the interested readers to the paper
-in which it was presented :footcite:p:`Kilmer`)
+:math:`\star_{\bf{M}}` -product framework (For a thorough introduction, we refer the interested readers to
+:footcite:p:`Kilmer`)
 
 The :ref:`TCAM` section contains tutorials for working with :class:`mprod.dimensionality_reduction.TCAM`.
 For construction and showcase of TCAM refer to :footcite:p:`mor2021`

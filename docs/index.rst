@@ -38,7 +38,6 @@ In addition, the library offers several basic tensor factorizations such as :mod
 
 You can find the software `on github <https://github.com/UriaMorP/mprod_package/>`_.
 
-
 ---------------------------------------------------------
 
 **Installation**
@@ -59,8 +58,6 @@ PyPI install, presuming you have requirements installed (numpy, scipy, pandas, s
     pip install mprod-package
 
 -------------------------------------------------------------
-
-
 
 Scientific context
 ------------------
@@ -91,7 +88,6 @@ integrity*\ .
   -- \ **Lior Horesh, IBM research** :footcite:p:`LHoresh`
 
 -------------------------
-
 
 .. toctree::
    :maxdepth: 4

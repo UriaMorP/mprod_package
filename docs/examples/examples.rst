@@ -29,25 +29,16 @@ started with machine learning in no time (dear computational biologist, please t
 try to read it before returning to your search for tools in R).
 
 In addition, deep understanding of the mathematical theory underlying  mprod based tensor algorithms is always a good
-idea. A short `primer` section  about the idea of tensor-tensor algebra via the :math:`\star_{\bf{M}}` -product framework
-**will soon be added** . For a thorough introduction, we refer the interested readers to the paper
-which presented it for the first time :footcite:p:`Kilmer`. Tutorials are grouped by the relevant mprod classes which
-implements the different algorithms. For construction and showcase of TCAM refer to :footcite:p:`mor2021`
+idea. Bellow, you can find a short :ref:`Primer` section  about the idea behind tensor-tensor algebra via the
+:math:`\star_{\bf{M}}` -product framework (For a thorough introduction, we refer the interested readers to the paper
+in which it was presented :footcite:p:`Kilmer`)
 
-.. |copy| unicode:: U+2699
+The :ref:`TCAM` section contains tutorials for working with :class:`mprod.dimensionality_reduction.TCAM`.
+For construction and showcase of TCAM refer to :footcite:p:`mor2021`
+
 
 --------------------------------
 
-
-.. _Primer:
-
-------------
-⚙ Background
-------------
-.. toctree::
-   :maxdepth: 4
-
-   mprod_primer
 
 .. _TCAM:
 
@@ -59,6 +50,19 @@ TCAM
 
    basic_example
    Schirmer2018
+
+
+
+
+.. _Primer:
+
+------------
+⚙ Background
+------------
+.. toctree::
+   :maxdepth: 4
+
+   mprod_primer
 
 
 .. footbibliography::

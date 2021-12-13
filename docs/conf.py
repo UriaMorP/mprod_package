@@ -13,19 +13,15 @@
 import os
 import sys
 import sphinx_gallery
+
 sys.path.insert(0, os.path.abspath('../'))
-sys.path.append(os.path.abspath('../'))
 import sphinx_rtd_theme
-
-import mprod
-
 
 # -- Project information -----------------------------------------------------
 
 project = 'mprod'
 copyright = '2021, Elinav&Avron groups'
 author = 'Uria Mor'
-
 
 # -- General configuration ---------------------------------------------------
 
@@ -56,9 +52,10 @@ extensions = [
     # "sphinx_gallery.gen_gallery",
     "sphinx-prompt",
     'sphinx.ext.napoleon',
-    "nbsphinx"
+    "nbsphinx",
+    # "myst_parser",
+    'm2r2',
 ]
-
 
 bibtex_bibfiles = ['refs.bib']
 
@@ -66,16 +63,15 @@ bibtex_bibfiles = ['refs.bib']
 # You can specify multiple suffix as a list of string:
 #
 # source_suffix = ['.rst', '.md']
-source_suffix = [".rst", ".ipynb"]
+source_suffix = [".rst", ".ipynb", ".md"]
 
 # do not execute cells
 nbsphinx_execute = "always"
-nbsphinx_kernel_name = 'python3'
 # nbsphinx_execute = "never"
 
 
 # allow errors because not all tutorials build
-# nbsphinx_allow_errors = True
+nbsphinx_allow_errors = True
 
 # napoleon related
 
@@ -106,7 +102,7 @@ exclude_patterns = ['_build',
                     '.ipynb_checkpoints',
                     "examples/.ipynb_checkpoints"]
 
-autodoc_default_options = {"members": True, "inherited-members": False, "methods":True}
+autodoc_default_options = {"members": True, "inherited-members": False, "methods": True}
 
 # -- Options for HTML output -------------------------------------------------
 
@@ -125,11 +121,9 @@ html_theme_path = [sphinx_rtd_theme.get_html_theme_path()]
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
 
-
 # -- Extension configuration -------------------------------------------------
 
 # -- Options for todo extension ----------------------------------------------
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = False
-

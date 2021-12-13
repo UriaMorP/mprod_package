@@ -53,7 +53,8 @@ TCAM
    :maxdepth: 4
 
    basic_example
-   Schirmer2018
+
+.. Schirmer2018
 
 
 

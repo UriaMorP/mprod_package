@@ -38,6 +38,7 @@ In addition, the library offers several basic tensor factorizations such as :mod
 
 You can find the software `on github <https://github.com/UriaMorP/mprod_package/>`_.
 
+
 ---------------------------------------------------------
 
 **Installation**

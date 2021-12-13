@@ -52,7 +52,7 @@ configuration = {
             "myst-parser == 0.15.2",
             "m2r2 == 0.3.1",
             "livereload == 2.6.3",
-            "pandoc == 2.11.4",
+            "pandoc == 2.0.1",
         ]
     }
 }

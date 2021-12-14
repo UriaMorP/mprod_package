@@ -17,7 +17,6 @@ The package builds on NumPy\ :footcite:p:`Harris2020` and Scipy\ :footcite:p:`Vi
 core operations and components required for the algebraic framework.
 
 
-
 :mod:`mprod-package` implements the fundamental components required for the :math:`\star_{\mathbf{M}}`-product algebraic
 framework; tensor-transpose, tensor-matrix multiplication (domain transforms), face-wise tensor multiplication, and, of
 course, the :math:`\star_{\mathbf{M}}` tensor-tensor product (See intro)
@@ -39,7 +38,9 @@ In addition, the library offers several basic tensor factorizations such as :mod
 You can find the software `on github <https://github.com/UriaMorP/mprod_package/>`_.
 
 
+
 ---------------------------------------------------------
+
 
 **Installation**
 ================
@@ -90,10 +91,9 @@ integrity*\ .
 
 -------------------------
 
+
 .. toctree::
-   :maxdepth: 4
-   :hidden:
-   :caption: Explore
+   :caption: Contents
 
    examples/examples
    modules/classes

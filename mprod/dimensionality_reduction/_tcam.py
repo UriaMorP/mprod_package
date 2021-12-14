@@ -74,6 +74,18 @@ class TCAM(TransformerMixin, BaseEstimator):
         features space (2'nd mode of the tensor) to each of the TCAM factors.
 
 
+    Methods
+    -------
+    fit:
+        Compute the TCAM transformation for a given dataset
+    transform:
+        Transform a given dataset using a fitted TCAM
+    fit_transform:
+        Fit a TCAM to a dataset then return its TCAM transformation
+    inverse_transform:
+        Given points in the reduced TCAM space, compute the points pre-image in the original features space.
+
+
     """
 
     def __init__(self, fun_m: MatrixTensorProduct = None,
@@ -175,6 +187,16 @@ class TCAM(TransformerMixin, BaseEstimator):
         -------
         self : object
             Returns the instance itself.
+
+
+        Examples
+        --------
+        >>> from mprod.dimensionality_reduction import TCAM
+        >>> import numpy as np
+        >>> X = np.random.randn(10,20,4)
+        >>> tca = TCAM()
+        >>> mdf = tca.fit(X)
+
 
         """
 

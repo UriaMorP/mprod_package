@@ -154,15 +154,25 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
     .. math::
         U = \\frac{1}{m-1} \\sum_{i=1}^{m} X[i,:,:]
 
-    Parameters
-    ----------
-    empiric : `bool`, default=False, or `None`
-        If ``True``, use the empiric mean sample calculation.
 
     Attributes
     ----------
     _mean_sample : ndarray of shape (p_features, n_repeats), or `None`
         The mean sample of the dataset
+
+
+    Methods
+    -------
+    fit:
+        Fits a MeanDeviationForm transformer by computing the mean sample of a training dataset
+    transform:
+        Shift dataset by fitted sample mean
+    fit_transform:
+        Compute the mean sample of a dataset and transform it to its mean deviation form
+    inverse_transform:
+        Add precomputed mean sample to a dataset
+
+
 
 
     """
@@ -197,7 +207,7 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
         >>> from mprod import MeanDeviationForm
         >>> import numpy as np
         >>> X = np.random.randn(10,20,4)
-        >>> mdf = MeanDeviationForm(empiric=False)
+        >>> mdf = MeanDeviationForm()
         >>> mdf = mdf.fit(X)
         """
         self._fit(X)
@@ -225,6 +235,7 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
         >>> mdf = MeanDeviationForm()
         >>> mdf_fit = mdf.fit(X)
         >>> yt = mdf.transform(yt)
+
         """
 
         X_transform = X - self._mean_sample
@@ -258,6 +269,7 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
         >>> mdf = MeanDeviationForm()
         >>> Xt = mdf.fit_transform(X)
         >>> mdf.inverse_transform(Xt) - X
+
         """
         Y_transform = Y + self._mean_sample
 

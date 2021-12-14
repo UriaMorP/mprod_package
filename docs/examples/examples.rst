@@ -1,9 +1,11 @@
-.. _tutorials
+.. _tutorials:
+
 =========
 Tutorials
 =========
 
 .. rubric:: Scope and intention
+
 This page presents a collection of tutorial written by the authors of mprod package
 and intended to help newcomers in incorporating the machinery offered by the library
 in their analysis workflows.
@@ -15,6 +17,7 @@ package content by adding :math:`\star_{\mathbf{M}}`-product based tools
 hoping to get good responses, feedback and help from the data-science community.
 
 .. rubric:: Target audience
+
 We do not expect expertise in Machine Learning, or data science, in order to use this package.
 In fact, it is aimed at non-experts
 
@@ -51,9 +54,10 @@ For construction and showcase of TCAM refer to :footcite:p:`mor2021`
 TCAM
 ----
 .. toctree::
-   :maxdepth: 4
+   :maxdepth: 8
 
    basic_example
+   supervised_learning
 
 .. Schirmer2018
 

@@ -1,4 +1,4 @@
-﻿:mod:`mprod`.MeanDeviationForm
+﻿:mod:`mprod.MeanDeviationForm`
 =====================================
 
 .. currentmodule:: mprod

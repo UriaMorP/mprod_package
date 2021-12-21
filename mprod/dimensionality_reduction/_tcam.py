@@ -275,9 +275,8 @@ class TCAM(TransformerMixin, BaseEstimator):
         """ The weights driving the variation in each of the obtained factors with respect to
         each feature
         """
-        # _assert_order_and_mdim(X, 'X', 3, [(1, self._p), (2, self._n)])
-        # return self._mode1_projector(self._mdf.transform(X))
-        return self._truncated_hat_svdm.v[self._n_factors_order[1], :, self._n_factors_order[0]].copy()
+
+        return self._truncated_hat_svdm.v[:,self._n_factors_order[1], self._n_factors_order[0]].copy()
 
     def fit_transform(self, X: np.ndarray, y=None, **fit_params):
 

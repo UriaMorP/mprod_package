@@ -101,7 +101,7 @@ display(data_table.iloc[:2,:2].round(3))
 
 ### Shape the data into tensor
 
-We use the `table2tensor` helper function to transform a 2-level (multi)-indexed `pandas.DataFrame` into a $3^{rd}$ order tensor. 
+We use the `table2tensor` helper function to transform a 2-level (multi)-indexed `pandas.DataFrame` into a 3rd order tensor. 
 
 
 ```python

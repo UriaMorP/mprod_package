@@ -5,7 +5,8 @@
 [![Documentation Status](https://readthedocs.org/projects/mprod-package/badge/?version=latest)](https://mprod-package.readthedocs.io/en/latest/?badge=latest)
 ![Conda](https://img.shields.io/conda/dn/conda-forge/mprod-package?label=downloads%28conda-forge%29)
 [![Conda Version](https://img.shields.io/conda/vn/conda-forge/mprod-package.svg)](https://anaconda.org/conda-forge/mprod-package)
-
+[![Pypi Downloads](https://img.shields.io/pypi/dm/mprod-package.svg?label=Pypi%20downloads)](
+https://pypi.org/project/mprod-package/)
 
 
 Software implementation for tensor-tensor m-product framework [[1]](#1).
@@ -159,36 +160,7 @@ pca_df = pd.DataFrame(pca_trans)   # Cast PCA scores to dataframe
 pca_df.index = data_table.index    # anotate PC scores with sample names
 ```
 
-### Plot the data
 
-Again - presentation of `TCAM`s output is done similarly to that of `PCA`. In this example, we don't show anything interesting in particular with the data. For more detailed use cases, see our documentation and tutorials.
-
-
-```python
-import matplotlib.pyplot as plt
-import numpy as np
-
-fig, axs = plt.subplots(1,2,figsize = [4,2], dpi = 300)
-
-axs[0].scatter(tca_df.iloc[:,0],tca_df.iloc[:,1], s = 2, linewidth = 0)
-axs[0].set_xlabel(f"$F_1$: {np.round(tca_var[0],2)}%", size = 8)
-axs[0].set_ylabel(f"$F_2$: {np.round(tca_var[1],2)}%", size = 8)
-axs[0].set_title("TCA")
-
-axs[1].scatter(pca_df.iloc[:,0],pca_df.iloc[:,1], s = 1, linewidth = 0)
-axs[1].set_xlabel(f"$PC_1$: {np.round(pca_var[0],2)}%", size = 8)
-axs[1].set_ylabel(f"$PC_2$: {np.round(pca_var[1],2)}%", size = 8)
-axs[1].set_title("PCA")
-
-
-plt.tight_layout()
-axs[0].set_aspect(1)
-axs[1].set_aspect(1)
-plt.show()
-```
-
-
-![png](./docs/examples/data/readme_graphs.png)
 
 
 

@@ -1,4 +1,4 @@
-﻿:mod:`mprod.dimensionality_reduction`.TCAM
+﻿:mod:`mprod.dimensionality_reduction.TCAM`
 =================================================
 
 .. currentmodule:: mprod.dimensionality_reduction

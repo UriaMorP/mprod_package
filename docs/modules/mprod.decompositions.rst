@@ -11,11 +11,8 @@ Future plans are to implement additional factorizations such as non negative ten
 .. autosummary::
    :toctree: stubs
 
-
     svdm
     tqrm
-
-
 
 
 .. automodule:: mprod.decompositions

@@ -3,18 +3,50 @@ from typing import Callable, Tuple, Dict, List
 
 import scipy.fft
 from scipy.fft import dct, idct, rfft, irfft
+from scipy.stats import ortho_group
 
 NumpynDArray = np.ndarray
 MatrixTensorProduct = Callable[[NumpynDArray], NumpynDArray]
 
 
 def _default_transform(tube_size: int) -> Tuple[MatrixTensorProduct, MatrixTensorProduct]:
-
     def fun_m(x):
         return dct(x, type=2, n=tube_size, axis=-1, norm='ortho')
 
     def inv_m(x):
         return idct(x, type=2, n=tube_size, axis=-1, norm='ortho')
+
+    return fun_m, inv_m
+
+
+def generate_dct(tube_size: int, dct_type: int = 2) -> Tuple[MatrixTensorProduct, MatrixTensorProduct]:
+    """Generates a DCT based tensor-matrix operation (forward and inverse)
+
+    Parameters
+    ----------
+
+    tube_size: int
+        the fiber-tube size of the tensors of interest
+
+    dct_type: int, default = 2
+        The choice of dct type, see scipy.fft.dct.__doc__ for details
+
+    Returns
+    -------
+
+    fun_m: MatrixTensorProduct
+        A tensor transform
+
+    inv_m: MatrixTensorProduct
+        A tensor transform (the inverse of `fun_m`)
+
+    """
+
+    def fun_m(x):
+        return dct(x, type=dct_type, n=tube_size, axis=-1, norm='ortho')
+
+    def inv_m(x):
+        return idct(x, type=dct_type, n=tube_size, axis=-1, norm='ortho')
 
     return fun_m, inv_m
 
@@ -68,6 +100,35 @@ def x_m3(M: NumpynDArray) -> MatrixTensorProduct:
             return M @ A
 
     return fun
+
+
+def generate_haar(tube_size: int, random_state = None) -> Tuple[MatrixTensorProduct, MatrixTensorProduct]:
+    """Generates a tensor-matrix transformation based on random sampling of unitary matrix
+    (according to the Haar distribution on O_n See scipy.stats.)
+
+    Parameters
+    ----------
+
+    tube_size: int
+        the fiber-tube size of the tensors of interest
+
+    Returns
+    -------
+
+    fun_m: MatrixTensorProduct
+        A tensor transform
+
+    inv_m: MatrixTensorProduct
+        A tensor transform (the inverse of `fun_m`)
+
+    """
+
+    M = ortho_group.rvs(tube_size, random_state=random_state)
+
+    fun_m = x_m3(M)
+    inv_m = x_m3(M.T)
+
+    return fun_m, inv_m
 
 
 def m_prod(tens_a: NumpynDArray,
@@ -133,7 +194,7 @@ def _t_pinv_fdiag(F, Mfun, Minv) -> NumpynDArray:
     pinv_hat_f = np.zeros_like(hat_f)
     for i in range(n):
         fi_diag = np.diagonal(hat_f[:, :, i]).copy()
-        fi_diag[(fi_diag**2) > 1e-6] = 1 / fi_diag[(fi_diag**2) > 1e-6]
+        fi_diag[(fi_diag ** 2) > 1e-6] = 1 / fi_diag[(fi_diag ** 2) > 1e-6]
 
         pinv_hat_f[:fi_diag.size, :fi_diag.size, i] = np.diag(fi_diag)
 
@@ -160,4 +221,3 @@ def _t_pinv_fdiag(F, Mfun, Minv) -> NumpynDArray:
 #         # see InfoArray.__array_finalize__ for comments
 #         if obj is None: return
 #         self.info = getattr(obj, 'info', None)
-

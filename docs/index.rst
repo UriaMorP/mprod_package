@@ -7,33 +7,59 @@
    _.. figure:: _static/img/mprod_logo_fav.png
 
 
-
-=============================
-mprod reference documentation
-=============================
+===================================================
+:code:`mprod`\: Tensor - Tensor algebraic framework
+===================================================
 
 mprod is a software implementation for tensor-tensor algebraic framework derived from the
 :math:`\star_{\bf{M}}`-product :footcite:p:`Kilmer`.
 The package builds on NumPy\ :footcite:p:`Harris2020` and Scipy\ :footcite:p:`Virtanen2020` libraries to realize
 core operations and components required for the algebraic framework.
 
----------------------------------------------------------
 
 :mod:`mprod-package` implements the fundamental components required for the :math:`\star_{\mathbf{M}}`-product algebraic
 framework; tensor-transpose, tensor-matrix multiplication (domain transforms), face-wise tensor multiplication, and, of
-course, the :math:`\star_{\mathbf{M}}` tensor-tensor product.
+course, the :math:`\star_{\mathbf{M}}` tensor-tensor product (See intro)
 
 In addition, the library offers several basic tensor factorizations such as :mod:`mprod.decompostions.tsvdm`
 :footcite:p:`Kilmer` , and :math:`\star_{\mathbf{M}}`-product based dimensionality reduction methods like the
 :mod:`mprod.dimensionality_reduction.TCAM` :footcite:p:`mor2021`
 
 
+.. figure:: _static/img/mprod_tcam_cartoon.png
+      :alt: TCAM cartoon
+      :class: with-shadow
+      :width: 90%
+      :align: center
+
+      An introductory cartoon for the TCAM :footcite:p:`mor2021` - an :math:`\star_{\mathbf{M}}`-product based
+      dimensionality reduction method for multi-way data.
+
+You can find the software `on github <https://github.com/UriaMorP/mprod_package/>`_.
+
+
+
 ---------------------------------------------------------
 
 
+**Installation**
+================
 
+Conda install, with the great help of the conda-forge team:
 
+.. code:: bash
 
+    conda install -c conda-forge mprod-package
+
+The conda-forge packages are available for Linux, OS X, and Windows 64 bit. Local testing was done only on Linux.
+
+PyPI install, presuming you have requirements installed (numpy, scipy, pandas, scikit-learn) installed:
+
+.. code:: bash
+
+    pip install mprod-package
+
+-------------------------------------------------------------
 
 Scientific context
 ------------------
@@ -63,19 +89,14 @@ integrity*\ .
 
   -- \ **Lior Horesh, IBM research** :footcite:p:`LHoresh`
 
-
-
-
-
 -------------------------
 
-.. toctree::
-   :maxdepth: 2
-   :hidden:
-   :caption: Explore
 
-   modules/classes
+.. toctree::
+   :caption: Contents
+
    examples/examples
+   modules/classes
 
 -------------------------
 

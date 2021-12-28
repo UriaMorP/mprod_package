@@ -49,6 +49,10 @@ configuration = {
             "ipykernel == 5.4.3",
             "seaborn == 0.11.1",
             "jupyter == 1.0.0",
+            "myst-parser == 0.15.2",
+            "m2r2 == 0.3.1",
+            "livereload == 2.6.3",
+            "pandoc == 2.0.1",
         ]
     }
 }

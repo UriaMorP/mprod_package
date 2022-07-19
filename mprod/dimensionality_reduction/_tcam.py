@@ -229,11 +229,13 @@ class TCAM(TransformerMixin, BaseEstimator):
         # XVS = self._mprod(XV, trunc_Spinv)
         # XVS_hat = self.fun_m(XVS)
 
-        XV_hat = np.matmul(self.fun_m(X).transpose(2, 0, 1), trunc_V.transpose(2, 0, 1))
-        XVS_hat = XV_hat * _pinv_diag(trunc_S).transpose().reshape(self._n, 1, self._rrho.max())
-        XVS_hat = XVS_hat.transpose(1, 2, 0)
+        XV_hat = np.matmul(self.fun_m(X).transpose(2, 0, 1), trunc_V.transpose(2, 0, 1)).transpose(1, 2, 0)
+        Y = XV_hat[:, self._n_factors_order[1], self._n_factors_order[0]].copy()
 
-        Y = XVS_hat[:, self._n_factors_order[1], self._n_factors_order[0]].copy()
+        # XV_hat = np.matmul(self.fun_m(X).transpose(2, 0, 1), trunc_V.transpose(2, 0, 1))
+        # XVS_hat = XV_hat * _pinv_diag(trunc_S).transpose().reshape(self._n, 1, self._rrho.max())
+        # XVS_hat = XVS_hat.transpose(1, 2, 0)
+        # Y = XVS_hat[:, self._n_factors_order[1], self._n_factors_order[0]].copy()
 
         # X_transformed_0 = self._mprod(X, self._truncated_svdm.v)
         # X_transformed_0 = self._mprod(X_transformed_0, self._truncS_pinv)
@@ -326,8 +328,8 @@ class TCAM(TransformerMixin, BaseEstimator):
 
         YY_hat = np.zeros((Y.shape[0], self._rrho.max(), self._n))
         YY_hat[:, self._n_factors_order[1], self._n_factors_order[0]] = Y.copy()
-        YYS_hat = YY_hat.transpose(2, 0, 1) * trunc_S.transpose().reshape(self._n, 1, self._rrho.max())
-        X_hat = np.matmul(YYS_hat, trunc_V.transpose(2, 1, 0)).transpose(1, 2, 0)
+        # YYS_hat = YY_hat.transpose(2, 0, 1) * trunc_S.transpose().reshape(self._n, 1, self._rrho.max())
+        X_hat = np.matmul(YY_hat.transpose(2, 0, 1), trunc_V.transpose(2, 1, 0)).transpose(1, 2, 0)
         XX = self.inv_m(X_hat)
 
         # Note that

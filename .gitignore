@@ -19,3 +19,5 @@ pytest.xml
 
 docs_exp/
 docs/run_livereload.py
+
+myenv

@@ -10,8 +10,8 @@ from ..decompositions import svdm
 from .._misc import _assert_order_and_mdim
 from .._ml_helpers import MeanDeviationForm
 
-_float_types = [np.typeDict[c] for c in 'efdg'] + [float]
-_int_types = [np.typeDict[c] for c in 'bhip'] + [int]
+_float_types = [np.sctypeDict[c] for c in 'efdg'] + [float]
+_int_types = [np.sctypeDict[c] for c in 'bhip'] + [int]
 
 
 def _pinv_diag(diag_tensor):

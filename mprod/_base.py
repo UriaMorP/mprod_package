@@ -91,14 +91,20 @@ def x_m3(M: NumpynDArray) -> MatrixTensorProduct:
         Picklable mapping that operates on (n dimensional) tube fibers of a tensor
 
     """
-
+    assert len(M.shape) == 2, "M must be a 2 dimensional matrix"
+    assert M.shape[0] == M.shape[1], "M must be a square matrix"
+    
+    tube_size = M.shape[0]
     def fun(A: NumpynDArray) -> NumpynDArray:
-        try:
+        assert A.shape[-1] == tube_size, "The last dimension of A must be the same as the tube size "
+        if len(A.shape) == 2:
+            # the case where A is a matrix representation of f-diagonal tensor
+            return  A @ M.T
+        elif len(A.shape) == 3:
             m, p, n = A.shape
             return (M @ A.transpose((2, 1, 0)).reshape(n, m * p)).reshape((n, p, m)).transpose((2, 1, 0))
-        except ValueError as ve:
-            return M @ A
-
+        else:
+            raise NotImplementedError("We only work with 3d tensors for now!")
     return fun
 
 

@@ -23,19 +23,20 @@ TENSOR_CASES = _make_tensor_cases()
 @pytest.mark.parametrize('tensor, m_pair', product(TENSOR_CASES, M_FUN_CASES))
 def test_tsvdm(tensor, m_pair):
     mfun, minv = m_pair
-    _m = gen_m_product(m_pair)
-    _t = gen_m_transpose(m_pair)
+    # _m = gen_m_product(m_pair)
+    # _t = gen_m_transpose(m_pair)
 
     u, s, v = svdm(tensor, mfun, minv)
     m, p, n = tensor.shape
     rk = min(m, p)
 
     assert s.shape[0] == rk, f"expected shape[0] of s to be {rk}, got {s.shape[0]}"
-    # print(s.shape)
+    assert s.shape[1] == tensor.shape[-1], f"expected shape[1] of s to be {tensor.shape[-1]}, got {s.shape[1]}"
+
 
     # tensor2 = _m(_m(u, s), _t(v))
-    shat =  mfun(s.transpose())
-    us = mfun(u).transpose(2, 0, 1) * shat.reshape(n, 1, m)
+    shat =  mfun(s)
+    us = mfun(u).transpose(2, 0, 1) * shat.T.reshape(n, 1, m)
     usv = np.matmul(us, mfun(v).transpose(2, 1, 0))
     usv = usv.transpose(1, 2, 0)
     tensor2 = minv(usv)

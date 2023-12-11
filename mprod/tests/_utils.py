@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from mprod import m_prod, x_m3, tensor_mtranspose
+from mprod import m_prod, x_m3, tensor_mtranspose, generate_dct
 from numpy.testing import (
     assert_, assert_equal, assert_raises, assert_array_equal,
     assert_almost_equal, assert_allclose, suppress_warnings,
@@ -21,6 +21,10 @@ def _make_mprod_op_cases():
         mfun = x_m3(mat_m)
         minv = x_m3(mat_m.T)
         mprod_cases.append((mfun,minv))
+        
+    # add dct based transforms
+    mfun, minv = generate_dct(n)
+    mprod_cases.append((mfun,minv))
     return mprod_cases
 
 

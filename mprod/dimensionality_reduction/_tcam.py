@@ -10,8 +10,8 @@ from ..decompositions import svdm
 from .._misc import _assert_order_and_mdim
 from .._ml_helpers import MeanDeviationForm
 
-_float_types = [np.typeDict[c] for c in 'efdg'] + [float]
-_int_types = [np.typeDict[c] for c in 'bhip'] + [int]
+_float_types = [np.sctypeDict[c] for c in 'efdg'] + [float]
+_int_types = [np.sctypeDict[c] for c in 'bhip'] + [int]
 
 
 def _pinv_diag(diag_tensor):
@@ -160,7 +160,7 @@ class TCAM(TransformerMixin, BaseEstimator):
             self._truncated_hat_svdm.v[:, rho_i:, i] = 0
 
         self._truncated_svdm = TensorSVDResults(self.inv_m(self._truncated_hat_svdm.u),
-                                                self.inv_m(self._truncated_hat_svdm.s.transpose()).transpose(),
+                                                self.inv_m(self._truncated_hat_svdm.s),
                                                 self.inv_m(self._truncated_hat_svdm.v))
 
         self._truncS_pinv = self._truncated_svdm.s.copy()

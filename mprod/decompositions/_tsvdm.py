@@ -8,9 +8,11 @@ def svdm(tens_a: np.ndarray, fun_m: MatrixTensorProduct, inv_m: MatrixTensorProd
          , hats: bool = False) \
         -> Tuple[NumpynDArray, NumpynDArray, NumpynDArray]:
     """
-    The svdm function is a helper function for computing the tsvdmII. This function does the **FULL** tsvdm
-    decomposition: ``u,s,b = tsvdm(tensor_a, m, inv_m)`` where ``u,v`` are of shapes ``(m,m,n)`` and ``(p,p,n)``,
-    M-orthogonal tensors and ``s`` is f-diagonal tensor of shape ``(m,p,n)``
+    The svdm function is a helper function for computing the tsvdmII.
+    This function does the **THIN** tsvdm: 
+    ``u,s,b = tsvdm(tensor_a, m, inv_m)`` where ``u,v`` are
+    ``(m,k,n)`` and ``(p,k,n)`` M-orthogonal tensors and ``s``
+    is an f-diagonal tensor of shape ``(k,k,n)`` and ``k=min(p,m)``
 
     Parameters
     ----------
@@ -19,18 +21,21 @@ def svdm(tens_a: np.ndarray, fun_m: MatrixTensorProduct, inv_m: MatrixTensorProd
     fun_m: MatrixTensorProduct
         Invertible mat-vec operation for transforming ``tens_a`` tube fibers
     inv_m: MatrixTensorProduct
-        Invertible mat-vec operation for transforming ``tens_a`` tube fibers. This operation is the inverse of ``fun_m``
+        Invertible mat-vec operation for transforming ``tens_a`` tube fibers.
+        This operation is the inverse of ``fun_m``
     hats: bool
-        Setting this to ``True`` will cause the function to return the tsvdm factors in the tensor domain transform.
+        Setting this to ``True`` will cause the function to return the tsvdm
+        factors in the tensor domain transform.
 
     Returns
     -------
     tens_u: np.ndarray
-        M-orthogonal tensor of shape ``(m,m,n)``
+        M-orthogonal tensor of shape ``(m,k,n)``
     tens_s: np.ndarray
-        f-diagonal tensor of shape ``(m,p,n)``
+        A ``(k,n)`` matrix representation of the f-diagonal tensor of
+        shape ``(k,k,n)``
     tens_v: np.ndarray
-        M-orthogonal Tensor of shape ``(p,p,n)``
+        M-orthogonal Tensor of shape ``(p,k,n)``
 
     """
     m, p, n = tens_a.shape
@@ -67,7 +72,7 @@ def svdm(tens_a: np.ndarray, fun_m: MatrixTensorProduct, inv_m: MatrixTensorProd
 
     u = inv_m(u_hat)
     v = inv_m(v_hat)
-    s = inv_m(s_hat.transpose()).transpose()
+    s = inv_m(s_hat)
 
     return u, s, v
 

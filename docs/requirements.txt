@@ -12,4 +12,3 @@ jupyter==1.0.0
 myst-parser==0.15.2
 livereload==2.6.3
 pandoc==2.0.1
-jupyter-book

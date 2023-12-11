@@ -17,5 +17,8 @@ build/
 mprod_package.egg-info/
 pytest.xml
 
+docs/examples/data/._*.png
+doc_exp/
 docs_exp/
 docs/run_livereload.py
+trashed_docs/

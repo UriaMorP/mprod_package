@@ -26,7 +26,7 @@ configuration = {
         , "tensor tensor product"
         , "tSVD", "tSVDM", "tensor decomposition"],
     "name": 'mprod-package',
-    "version": '0.0.5a1',
+    "version": '0.0.6',
     "packages": find_packages(),
     "long_description": readme,
     "url": "https://github.com/UriaMorP/mprod_package",

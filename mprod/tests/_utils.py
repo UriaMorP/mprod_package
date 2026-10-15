@@ -1,7 +1,7 @@
 import pytest
 import numpy as np
 
-from mprod import m_prod, x_m3, tensor_mtranspose, generate_dct
+from mprod import m_prod, x_m3, tensor_mtranspose, generate_dct, generate_haar
 from numpy.testing import (
     assert_, assert_equal, assert_raises, assert_array_equal,
     assert_almost_equal, assert_allclose, suppress_warnings,
@@ -81,3 +81,39 @@ def assert_m_orth(tensor, mfun, minv):
     @pytest.mark.parametrize('tens', TENSOR_CASES)
     def _assert_id(tens):
         assert_identity(J, tens, _m)
+
+
+def _make_mprod_op_cases_tube(tube_size):
+    """`_make_mprod_op_cases` for an arbitrary tube size."""
+    cases = []
+    for i in range(2):
+        rng = np.random.default_rng(seed=i)
+        mat_m = np.linalg.qr(rng.random((tube_size, tube_size)))[0]
+        cases.append((x_m3(mat_m), x_m3(mat_m.T)))
+    cases.append(generate_haar(tube_size, random_state=0))
+    cases.append(generate_dct(tube_size))
+    return cases
+
+
+def _make_masked_tensor_cases(mm=12, pp=7, nn=5):
+    cases = []
+    for i in range(2):
+        rng = np.random.default_rng(seed=i)
+        X = rng.random((mm, pp, nn))
+        mask = np.zeros((mm, pp, nn), dtype=bool)
+        mask[0, :, -1] = True
+        mask[3, :, 0] = True
+        cases.append(np.ma.array(X, mask=mask, fill_value=0))
+    return cases
+
+
+def _make_gapped_table(mm=12, pp=7, nn=5, seed=0, n_drop=4):
+    """A (subject x rep) x feature table whose id x mode3 grid is incomplete."""
+    import pandas as pd
+    rng = np.random.default_rng(seed=seed)
+    idx = pd.MultiIndex.from_product(
+        [[f"s{i}" for i in range(mm)], [f"t{j}" for j in range(nn)]],
+        names=["SubjectID", "rep"])
+    table = pd.DataFrame(rng.random((len(idx), pp)), index=idx,
+                         columns=[f"f{k}" for k in range(pp)])
+    return table.drop(index=table.index[rng.choice(len(idx), size=n_drop, replace=False)])

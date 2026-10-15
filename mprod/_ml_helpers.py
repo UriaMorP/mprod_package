@@ -240,7 +240,7 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
 
         X_transform = X - self._mean_sample
         if type(X_transform) == np.ma.core.MaskedArray:
-            return X_transform.filled().data
+            return X_transform.filled()
         else:
             return X_transform
 
@@ -274,7 +274,7 @@ class MeanDeviationForm(TransformerMixin, BaseEstimator):
         Y_transform = Y + self._mean_sample
 
         if type(Y) == np.ma.core.MaskedArray:
-            return Y_transform.filled().data
+            return Y_transform.filled()
         else:
             return Y_transform
 

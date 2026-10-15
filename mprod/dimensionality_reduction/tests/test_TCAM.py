@@ -4,8 +4,9 @@ import numpy as np
 from itertools import product
 
 from mprod.dimensionality_reduction import TCAM
-from mprod import MeanDeviationForm
-from mprod.tests._utils import (_make_mprod_op_cases, _make_tensor_cases, gen_m_product, gen_m_transpose, assert_m_orth,
+from mprod import MeanDeviationForm, table2tensor
+from mprod.tests._utils import (_make_mprod_op_cases, _make_tensor_cases, gen_m_product, gen_m_transpose,
+                                assert_m_orth, _make_mprod_op_cases_tube, _make_gapped_table,
                                 m, n, p)
 
 from numpy.testing import (
@@ -76,4 +77,37 @@ def test_tcam_residue_m_orth(X, n_components, mpair):
     assert_almost_equal(res_prod_norm, 0, err_msg=f"got {res_prod_norm} instead of 0", verbose=True, )
 
 
+def test_tcam_scalar_type_tables():
+    # regression: numpy 2.0 dropped the single-char keys of np.sctypeDict, so
+    # `from mprod.dimensionality_reduction import TCAM` raised KeyError: 'e'.
+    from mprod.dimensionality_reduction import _tcam
+    assert_equal(_tcam._float_types,
+                 [np.float16, np.float32, np.float64, np.longdouble, float])
+    assert_equal(_tcam._int_types,
+                 [np.int8, np.int16, np.int32, np.intp, int])
 
+
+GAPPED_TUBE = 5
+GAPPED_M_FUN_CASES = _make_mprod_op_cases_tube(GAPPED_TUBE)
+
+
+@pytest.mark.parametrize('n_components', [2, 0.5])
+@pytest.mark.parametrize('mpair', GAPPED_M_FUN_CASES + [None])
+def test_tcam_fit_transform_incomplete_table(n_components, mpair):
+    # regression: with an x_m3-based fun_m, MeanDeviationForm.transform used to
+    # return a memoryview and x_m3's 3-d branch raised AttributeError.
+    table = _make_gapped_table(nn=GAPPED_TUBE, seed=1, n_drop=4)
+    tensor, mode1_map, mode3_map = table2tensor(table, missing_flag=True)
+    assert_(isinstance(tensor, np.ma.MaskedArray))
+
+    if mpair is None:
+        tca = TCAM(n_components=n_components)
+    else:
+        mfun, minv = mpair
+        tca = TCAM(fun_m=mfun, inv_m=minv, n_components=n_components)
+
+    Y = tca.fit_transform(tensor)
+    assert_(isinstance(Y, np.ndarray), msg=f"fit_transform returned {type(Y)}")
+    assert_equal(Y.shape[0], tensor.shape[0])
+    assert_allclose(Y, tca.fit(tensor).transform(tensor))
+    assert_equal(tca.inverse_transform(Y).shape, tensor.shape)
